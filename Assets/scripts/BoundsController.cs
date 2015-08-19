@@ -8,13 +8,6 @@ public class BoundsController : MonoBehaviour {
 	public const float CAMERA_SIZE = MAP_SIZE_VERTICAL - 0.5f;
 
 	public void Update () {
-//		Vector3 modelPosition = transform.position * .5f + Vector3.one * .5f * MAP_SIZE;
-//
-//		modelPosition.x = Mathf.Repeat(modelPosition.x, MAP_SIZE);
-//		modelPosition.y = Mathf.Repeat(modelPosition.y, MAP_SIZE);
-//
-//		transform.position = modelPosition * 2f - Vector3.one * MAP_SIZE;
-
 		float model_position_x = transform.position.x * 0.5f + 0.5f * MAP_SIZE_HORIZONTAL;
 		float model_position_y = transform.position.y * 0.5f + 0.5f * MAP_SIZE_VERTICAL;
 
