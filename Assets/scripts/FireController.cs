@@ -4,14 +4,8 @@ using System.Collections.Generic;
 
 public class FireController : MonoBehaviour {
 
-	private ObjectPooler bulletPool;
-
-	void Start() {
-		bulletPool = GetComponent<ObjectPooler>();
-	}
-	
 	public void Fire() {
-		GameObject obj = ObjectPooler.current.GetObject();
+		GameObject obj = PoolManager.instance.bulletPool.GetObject();
 
 		if (obj != null) {
 			obj.transform.position = transform.position;

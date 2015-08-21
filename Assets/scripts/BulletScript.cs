@@ -26,4 +26,12 @@ public class BulletScript : MonoBehaviour {
 		gameObject.SetActive(false);
 		lifeTime = 0;
 	}
+
+	void OnTriggerEnter2D (Collider2D collider) {
+		if (collider.gameObject.tag == "asteroid") {
+			AsteroidController controller = collider.gameObject.GetComponent<AsteroidController>();
+			controller.Damage(1);
+			gameObject.SetActive(false);
+		}
+	}
 }
