@@ -13,9 +13,6 @@ public class ObjectPooler : MonoBehaviour {
 
 	void Awake() {
 		current = this;
-	}
-
-	void Start() {
 		pooledObjects = new List<GameObject>();
 
 		for (int i = 0; i < pooledAmount; i++) {

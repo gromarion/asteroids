@@ -23,19 +23,19 @@ public class AsteroidController : MonoBehaviour {
 		transform.Translate(speed * Time.deltaTime);
 	}
 
-	void MakeSmallAsteroid() {
+	public void MakeSmallAsteroid() {
 		spriteRenderer.sprite = smallAsteroid;
 		speed = Random.insideUnitCircle * maxSpeed;
 		health = 1;
 	}
 
-	void MakeMediumAsteroid() {
+	public void MakeMediumAsteroid() {
 		spriteRenderer.sprite = mediumAsteroid;
 		speed = Random.insideUnitCircle * maxSpeed;
 		health = 2;
 	}
 
-	void MakeLargeAsteroid() {
+	public void MakeLargeAsteroid() {
 		spriteRenderer.sprite = largeAsteroid;
 		speed = Random.insideUnitCircle * maxSpeed;
 		health = 3;
@@ -48,6 +48,7 @@ public class AsteroidController : MonoBehaviour {
 	public void Damage(int damage) {
 		int finalHealth = health - damage;
 		for (int i = 0; i < spawnAmount; i++) {
+			// If the asteroid wasn't fully destroyed, split it
 			if (finalHealth > 0) {
 				GameObject clone = PoolManager.instance.asteroidPool.GetObject();
 				if (clone != null) {
@@ -73,6 +74,10 @@ public class AsteroidController : MonoBehaviour {
 				else {
 					Debug.Log("Empty asteroid pool");
 				}
+			}
+			else {
+				// Otherwise, notify the GameManager
+				GameManager.instance.OnDestroyAsteroid();
 			}
 		}
 		gameObject.SetActive(false);
