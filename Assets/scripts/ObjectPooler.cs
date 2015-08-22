@@ -39,4 +39,10 @@ public class ObjectPooler : MonoBehaviour {
 
 		return obj;
 	}
+
+	public void RecycleAll() {
+		for (int i = 0; i < pooledObjects.Count; i++) {
+			pooledObjects[i].SetActive(false);
+		}
+	}
 }

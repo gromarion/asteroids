@@ -46,9 +46,21 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start () {
+		RestartGame();
+	}
+
+	public void RestartGame() {
 		currentLevel = 1;
+		score = 0;
+		bonus = 0;
+		gameStatus = GameStatus.Normal;
+
+		PoolManager.instance.asteroidPool.RecycleAll();
 		CreateLevel(currentLevel);
 		ui.ShowHud();
+		player.gameObject.SetActive(true);
+		player.transform.position = Vector3.zero;
+		player.transform.rotation = new Quaternion(0, 0, 0, 1);
 	}
 
 	public void CreateLevel(int level) {
