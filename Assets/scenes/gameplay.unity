@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679edc6268ee74d4e9a5dbe8cff1625f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialAsteroids: 3
+  initialAsteroids: 2
+  asteroidsSpawnMinRadius: 2.5
+  asteroidsSpawnMaxRadius: 5
   player: {fileID: 1528797108}
 --- !u!4 &527102691
 Transform:
@@ -207,7 +209,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447812, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
