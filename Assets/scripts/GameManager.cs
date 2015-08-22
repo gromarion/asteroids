@@ -104,9 +104,10 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// If there are no more asteroids, wait for a bit before going to the next level
+		// Also, make that cool effect where the bonus is added to the score
 		if (gameStatus == GameStatus.FinishingLevel) {
 			delayTimer += Time.deltaTime;
-			int deltaBonus = (int) ((roundBonus / 1.5f) * Time.deltaTime);
+			int deltaBonus = (int) Mathf.Ceil(((roundBonus / 1.5f) * Time.deltaTime));
 			if (deltaBonus < bonus && bonus > 0) {
 				bonus -= deltaBonus;
 				score += deltaBonus;
