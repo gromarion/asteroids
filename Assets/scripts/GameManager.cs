@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 
 	private int remainingAsteroids = 0; // Amount of SMALL asteroids remaining in the current level
 	private int currentLevel = 1;
+	private int score = 0;
+	private int bonus = 5000;
 
 	void Awake () {
 		if (instance == null) {
@@ -66,5 +68,17 @@ public class GameManager : MonoBehaviour {
 		if (remainingAsteroids <= 0) {
 			CreateLevel(++currentLevel);
 		}
+	}
+
+	public int GetLevel() {
+		return currentLevel;
+	}
+
+	public int GetScore() {
+		return score;
+	}
+
+	public int GetBonus() {
+		return bonus;
 	}
 }
