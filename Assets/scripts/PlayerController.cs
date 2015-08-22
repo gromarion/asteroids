@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	private FireController fireController;
 
+	public int fuel = 10;
 	public float speed = 3.0f;
 	public float rotationSpeed = 3.0f;
 
