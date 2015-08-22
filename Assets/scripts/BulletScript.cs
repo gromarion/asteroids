@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour {
 		if (collider.gameObject.tag == "asteroid") {
 			AsteroidController controller = collider.gameObject.GetComponent<AsteroidController>();
 			controller.Damage(1);
-			gameObject.SetActive(false);
+			Destroy();
 		}
 	}
 }
