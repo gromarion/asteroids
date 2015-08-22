@@ -117,6 +117,9 @@ MonoBehaviour:
   initialAsteroids: 2
   asteroidsSpawnMinRadius: 2.5
   asteroidsSpawnMaxRadius: 5
+  bonusTimePerLevel: 30
+  maxBonus: 500
+  bonusPerLargeAsteroid: 5
   player: {fileID: 1528797108}
 --- !u!4 &527102691
 Transform:

@@ -8,12 +8,16 @@ public class GameManager : MonoBehaviour {
 	public int initialAsteroids = 100;
 	public float asteroidsSpawnMinRadius = 3f;
 	public float asteroidsSpawnMaxRadius = 6f;
+	public int bonusTimePerLevel = 30; // In seconds
+	public int maxBonus = 5000;
+	public int bonusPerLargeAsteroid = 10;
 	public PlayerController player;
 
 	private int remainingAsteroids = 0; // Amount of SMALL asteroids remaining in the current level
 	private int currentLevel = 1;
 	private int score = 0;
-	private int bonus = 5000;
+	private int bonus = 0;
+	private float bonusTime = 0;
 
 	void Awake () {
 		if (instance == null) {
@@ -46,11 +50,11 @@ public class GameManager : MonoBehaviour {
 					float rotate = Random.Range(0, 360f);
 					float dist = Random.Range(asteroidsSpawnMinRadius, asteroidsSpawnMaxRadius);
 					asteroid.transform.position = player.transform.position;
-					asteroid.transform.Rotate(new Vector3(0, 0, Random.Range(0, 360f)));
+					asteroid.transform.Rotate(new Vector3(0, 0, rotate));
 					asteroid.transform.Translate(new Vector3(dist, dist));
 
 					asteroidController.MakeLargeAsteroid();
-					remainingAsteroids += 3 * 3 * 3;
+					remainingAsteroids += 3 * 3;
 				}
 				else {
 					Debug.LogWarning("Asteroid pool not returning asteroids");
@@ -60,14 +64,37 @@ public class GameManager : MonoBehaviour {
 				Debug.Log("Empty asteroid pool");
 			}
 		}
+
+		bonusTime = bonusTimePerLevel * GetLevel();
 	}
 
-	public void OnDestroyAsteroid() {
-		remainingAsteroids--;
+	void Update() {
+		if (bonusTime > 0) {
+			bonusTime -= Time.deltaTime;
+		}
+		else {
+			bonusTime = 0;
+		}
+
+		bonus = (int) (maxBonus * bonusTime / (float) (bonusTimePerLevel));
+	}
+
+	public void OnDestroyAsteroid(int asteroidHealth) {
+		if (asteroidHealth <= 0) {
+			remainingAsteroids--;
+			asteroidHealth = 0;
+		}
+
+		score += (3 - asteroidHealth) * bonusPerLargeAsteroid;
 
 		if (remainingAsteroids <= 0) {
-			CreateLevel(++currentLevel);
+			OnLevelComplete();
 		}
+	}
+
+	public void OnLevelComplete() {
+		score += bonus;
+		CreateLevel(++currentLevel);
 	}
 
 	public int GetLevel() {

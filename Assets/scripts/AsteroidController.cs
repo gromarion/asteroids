@@ -75,11 +75,9 @@ public class AsteroidController : MonoBehaviour {
 					Debug.Log("Empty asteroid pool");
 				}
 			}
-			else {
-				// Otherwise, notify the GameManager
-				GameManager.instance.OnDestroyAsteroid();
-			}
 		}
+
+		GameManager.instance.OnDestroyAsteroid(finalHealth);
 		gameObject.SetActive(false);
 	}
 }
