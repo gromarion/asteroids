@@ -6,6 +6,7 @@ public class PoolManager : MonoBehaviour {
 	public static PoolManager instance;
 	public ObjectPooler bulletPool;
 	public ObjectPooler asteroidPool;
+	public ObjectPooler explotionPool;
 
 	void Awake () {
 		if (instance == null) {

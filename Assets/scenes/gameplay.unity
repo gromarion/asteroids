@@ -199,6 +199,7 @@ Transform:
   m_Children:
   - {fileID: 2049286863}
   - {fileID: 1143400334}
+  - {fileID: 1849852187}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!114 &1435248651
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 1143400333}
   asteroidPool: {fileID: 2049286864}
+  explotionPool: {fileID: 1849852188}
 --- !u!1 &1448037311
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +335,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 421084, guid: 93ecc36d7f8d9764e9cc66f3084c4ecc, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 125914, guid: 93ecc36d7f8d9764e9cc66f3084c4ecc, type: 2}
       propertyPath: m_Name
@@ -443,6 +445,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4defd5af446d84453ba0470656ed71b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1849852186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1849852187}
+  - 114: {fileID: 1849852188}
+  m_Layer: 0
+  m_Name: ExplotionPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1849852187
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849852186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1435248650}
+  m_RootOrder: 2
+--- !u!114 &1849852188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849852186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b01279978ca9d45a8a53e297fe1aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 180380, guid: db240de8f1457427c8c14b8d7a121e55, type: 2}
+  pooledAmount: 5
+  willGrow: 0
 --- !u!1 &2049286862
 GameObject:
   m_ObjectHideFlags: 0

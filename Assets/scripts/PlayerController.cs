@@ -9,13 +9,11 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 3.0f;
 	public float rotationSpeed = 3.0f;
 
-	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		fireController = GetComponent<FireController> ();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		float vertical = Input.GetAxis("Vertical");
 		float rotate = Input.GetAxis("Horizontal") * rotationSpeed;
@@ -28,5 +26,16 @@ public class PlayerController : MonoBehaviour {
 		if (vertical > 0) {
 			rigidBody.AddForce(transform.up * Time.deltaTime * speed * vertical);
 		}
+	}
+
+	void hit () {
+		// JA JA JA I let's make some fire
+		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
+		explosion.transform.position = transform.position;
+		explosion.SetActive (true);
+		// Die Ship die
+		gameObject.SetActive (false);
+		ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
+		explosionController.explode ();
 	}
 }
