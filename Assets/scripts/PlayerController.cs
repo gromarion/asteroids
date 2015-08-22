@@ -20,11 +20,15 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate(0, 0, 0 - rotate);
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
+			SoundManager.instance.shoot();
 			fireController.Fire();
 		}
 
 		if (vertical > 0) {
+			SoundManager.instance.thrustOn();
 			rigidBody.AddForce(transform.up * Time.deltaTime * speed * vertical);
+		} else {
+			SoundManager.instance.thrustOff();
 		}
 	}
 

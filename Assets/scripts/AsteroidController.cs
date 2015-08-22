@@ -46,6 +46,7 @@ public class AsteroidController : MonoBehaviour {
 	}
 
 	public void Damage(int damage) {
+		SoundManager.instance.explode();
 		int finalHealth = health - damage;
 		for (int i = 0; i < spawnAmount; i++) {
 			// If the asteroid wasn't fully destroyed, split it
