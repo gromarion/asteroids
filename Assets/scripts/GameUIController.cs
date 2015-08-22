@@ -4,23 +4,27 @@ using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour {
 
-	private Text txtScore;
-	private Text txtLevel;
-	private Text txtBonus;
-
-	void Start () {
-		txtScore = GameObject.Find("txtScore").GetComponent<Text>();
-		txtLevel = GameObject.Find("txtLevel").GetComponent<Text>();
-		txtBonus = GameObject.Find("txtBonus").GetComponent<Text>();
-	}
-
-	void Update() {
-		this.RefreshUi();
-	}
+	public GameObject hud;
+	public Text txtScore;
+	public Text txtLevel;
+	public Text txtBonus;
+	public Text txtFinalScore;
+	public GameObject pnlGameOver;
 
 	public void RefreshUi() {
 		txtScore.text = GameManager.instance.GetScore().ToString();
 		txtLevel.text = GameManager.instance.GetLevel().ToString();
 		txtBonus.text = GameManager.instance.GetBonus().ToString();
+	}
+
+	public void ShowGameOver() {
+		hud.SetActive(false);
+		pnlGameOver.SetActive(true);
+		txtFinalScore.text = GameManager.instance.GetScore().ToString();
+	}
+
+	public void ShowHud() {
+		hud.SetActive(true);
+		pnlGameOver.SetActive(false);
 	}
 }

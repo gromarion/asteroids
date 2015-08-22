@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 	public int bonusPerLargeAsteroid = 10;
 	public PlayerController player;
 
+	public GameUIController ui;
+
 	private int remainingAsteroids = 0; // Amount of SMALL asteroids remaining in the current level
 	private int currentLevel = 1;
 	private int score = 0;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		currentLevel = 1;
 		CreateLevel(currentLevel);
+		ui.ShowHud();
 	}
 
 	public void CreateLevel(int level) {
@@ -77,6 +80,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		bonus = (int) (maxBonus * bonusTime / (float) (bonusTimePerLevel));
+		ui.RefreshUi();
 	}
 
 	public void OnDestroyAsteroid(int asteroidHealth) {
