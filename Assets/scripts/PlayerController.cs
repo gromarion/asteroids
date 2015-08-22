@@ -28,6 +28,17 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D (Collider2D collider) {
+		if (collider.gameObject.tag == "asteroid") {
+			AsteroidController asteroidController = collider.gameObject.GetComponent<AsteroidController>();
+			if (asteroidController != null) {
+				asteroidController.Damage(1);
+			}
+			hit();
+			GameManager.instance.OnPlayerDeath();
+		}
+	}
+
 	void hit () {
 		// JA JA JA I let's make some fire
 		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();

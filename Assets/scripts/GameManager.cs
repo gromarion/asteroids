@@ -19,7 +19,18 @@ public class GameManager : MonoBehaviour {
 	private int currentLevel = 1;
 	private int score = 0;
 	private int bonus = 0;
+	private int roundBonus;
 	private float bonusTime = 0;
+	private float delayTimer;
+	private float delay = 2f;
+	private GameStatus gameStatus = GameStatus.Normal;
+
+	public enum GameStatus {
+		Normal,
+		FinishingLevel,
+		Dying,
+		GameOver
+	};
 
 	void Awake () {
 		if (instance == null) {
@@ -72,14 +83,47 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if (bonusTime > 0) {
-			bonusTime -= Time.deltaTime;
-		}
-		else {
-			bonusTime = 0;
+		if (gameStatus == GameStatus.Normal) {
+			if (bonusTime > 0) {
+				bonusTime -= Time.deltaTime;
+			}
+			else {
+				bonusTime = 0;
+			}
+
+			bonus = (int) (maxBonus * bonusTime / (float) (bonusTimePerLevel));
 		}
 
-		bonus = (int) (maxBonus * bonusTime / (float) (bonusTimePerLevel));
+		// If the player is dead, wait for a bit before showing the game over screen
+		if (gameStatus == GameStatus.Dying) {
+			delayTimer += Time.deltaTime;
+			if (delayTimer >= delay) {
+				ui.ShowGameOver();
+				gameStatus = GameStatus.GameOver;
+			}
+		}
+
+		// If there are no more asteroids, wait for a bit before going to the next level
+		if (gameStatus == GameStatus.FinishingLevel) {
+			delayTimer += Time.deltaTime;
+			int deltaBonus = (int) ((roundBonus / 1.5f) * Time.deltaTime);
+			if (deltaBonus < bonus && bonus > 0) {
+				bonus -= deltaBonus;
+				score += deltaBonus;
+			}
+			else {
+				bonus = 0;
+				score += bonus;
+			}
+
+			if (delayTimer >= delay) {
+				bonus = 0;
+				CreateLevel(++currentLevel);
+				gameStatus = GameStatus.Normal;
+			}
+		}
+
+		// Finally, refresh the UI
 		ui.RefreshUi();
 	}
 
@@ -96,9 +140,18 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void OnPlayerDeath() {
+		gameStatus = GameStatus.Dying;
+		delayTimer = 0;
+		ui.HideAll();
+	}
+
 	public void OnLevelComplete() {
-		score += bonus;
-		CreateLevel(++currentLevel);
+		if (gameStatus == GameStatus.Normal) {
+			delayTimer = 0;
+			roundBonus = bonus;
+			gameStatus = GameStatus.FinishingLevel;
+		}
 	}
 
 	public int GetLevel() {

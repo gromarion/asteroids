@@ -27,4 +27,9 @@ public class GameUIController : MonoBehaviour {
 		hud.SetActive(true);
 		pnlGameOver.SetActive(false);
 	}
+
+	public void HideAll() {
+		hud.SetActive(false);
+		pnlGameOver.SetActive(false);
+	}
 }
