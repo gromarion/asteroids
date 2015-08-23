@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BoundsController : MonoBehaviour {
 
-	public const float MAP_SIZE_HORIZONTAL = 10f;
-	public const float MAP_SIZE_VERTICAL = 5.5f;
+	public const float MAP_SIZE_HORIZONTAL = 12f;
+	public const float MAP_SIZE_VERTICAL = 7.5f;
 	public const float CAMERA_SIZE = MAP_SIZE_VERTICAL - 0.5f;
 
 	public void Update () {
