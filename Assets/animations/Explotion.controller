@@ -20,7 +20,19 @@ AnimatorController:
     m_DefaultWeight: 0
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - serializedVersion: 5
+    m_Name: BulletExplosion
+    m_StateMachine: {fileID: 110759052}
+    m_Mask: {fileID: 0}
+    m_Motions: []
+    m_Behaviours: []
+    m_BlendingMode: 0
+    m_SyncedLayerIndex: -1
+    m_DefaultWeight: 0
+    m_IKPass: 0
+    m_SyncedLayerAffectsTiming: 0
+    m_Controller: {fileID: 0}
   m_MultiThreadedStateMachine: 1
 --- !u!114 &11424240
 MonoBehaviour:
@@ -50,10 +62,10 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 0d18f1fa835024547866d18163e89d7a, type: 2}
   m_Tag: 
---- !u!1102 &110297138
+--- !u!1102 &110290350
 AnimatorState:
   serializedVersion: 5
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: bullet_explosion
@@ -67,6 +79,30 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7400000, guid: 85dd9a8d2d4e4454cb4628dba23faef8, type: 2}
   m_Tag: 
+--- !u!1107 &110759052
+AnimatorStateMachine:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BulletExplosion
+  m_ChildStates:
+  - serializedVersion: 1
+    m_State: {fileID: 110290350}
+    m_Position: {x: 276, y: 108, z: 0}
+  m_ChildStateMachines: []
+  m_AnyStateTransitions: []
+  m_EntryTransitions: []
+  m_StateMachineTransitions:
+    data:
+      first: {fileID: 110759052}
+      second: []
+  m_StateMachineBehaviours: []
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_DefaultState: {fileID: 110290350}
 --- !u!1107 &110766880
 AnimatorStateMachine:
   serializedVersion: 5
@@ -78,9 +114,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 110229432}
     m_Position: {x: 288, y: 132, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 110297138}
-    m_Position: {x: 288, y: 24, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
