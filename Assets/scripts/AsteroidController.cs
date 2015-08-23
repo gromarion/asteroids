@@ -58,6 +58,11 @@ public class AsteroidController : MonoBehaviour {
 		SoundManager.instance.explode();
 		int finalHealth = health - damage;
 		for (int i = 0; i < spawnAmount; i++) {
+			GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
+			explosion.transform.position = transform.position;
+			explosion.SetActive (true);
+			ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
+			explosionController.SmallExplosion();
 			// If the asteroid wasn't fully destroyed, split it
 			if (finalHealth > 0) {
 				GameObject clone = PoolManager.instance.asteroidPool.GetObject();

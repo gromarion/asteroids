@@ -15,11 +15,17 @@ public class ExplotionController : MonoBehaviour {
 		animator.Play ("large_explosion");
 	}
 
+	public void SmallExplosion () {
+		transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+		animator.Play ("large_explosion");
+	}
+
 	public void BulletExplosion () {
 		animator.Play ("bullet_explosion");
 	}
 
-	public void Destroy () {
+	public void DestroyExplosion () {
+		transform.localScale = new Vector3(1f, 1f, 1f);
 		gameObject.SetActive(false);
 	}
 }

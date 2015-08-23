@@ -19,9 +19,9 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300004, guid: 077f6fd198af2b7439f436bb6127a8ae, type: 3}
-    - time: .5
+    - time: .1
       value: {fileID: 21300006, guid: 077f6fd198af2b7439f436bb6127a8ae, type: 3}
-    - time: .916666687
+    - time: .2
       value: {fileID: 21300008, guid: 077f6fd198af2b7439f436bb6127a8ae, type: 3}
     attribute: m_Sprite
     path: 
@@ -47,7 +47,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .933333337
+    m_StopTime: .2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -67,8 +67,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: .916666687
-    functionName: Destroy
+  - time: .2
+    functionName: DestroyExplosion
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
