@@ -1258,6 +1258,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1448037313}
   - 212: {fileID: 1448037312}
+  - 114: {fileID: 1448037314}
   m_Layer: 0
   m_Name: background_image
   m_TagString: Untagged
@@ -1303,6 +1304,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1448037314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448037311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb2ad065deab45fc934f05a38d081fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoot_sound: {fileID: 8300000, guid: ca958af27e63b42b49c07a98a23ee0dd, type: 3}
+  explosion1: {fileID: 8300000, guid: 36e79bc37ba0a4e52a5b27b97d4ba80b, type: 3}
+  explosion2: {fileID: 8300000, guid: 8904fdc9dd5d84ef485969bb821fece8, type: 3}
+  explosion3: {fileID: 8300000, guid: 1495c5d8952744ff2ae20ab80f338b44, type: 3}
+  thrust: {fileID: 0}
 --- !u!1 &1528797105 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 170578, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
@@ -1603,6 +1620,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!4 &1690338169
 Transform:
   m_ObjectHideFlags: 0
@@ -1814,8 +1832,7 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1938,6 +1955,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &2063427824
 MonoBehaviour:
