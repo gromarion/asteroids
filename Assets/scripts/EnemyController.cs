@@ -22,8 +22,10 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(speed * Time.deltaTime);
-		fireController.Fire();
+		transform.Translate (speed * Time.deltaTime);
+		if (Random.Range (0f, 1f) > 0.99) {
+			fireController.Fire ();
+		}
 	}
 
 	public void Destroy () {
@@ -33,9 +35,9 @@ public class EnemyController : MonoBehaviour {
 	private Vector3 OutOfScreenPosition () {
 		float rand = Random.Range (0, 1);
 		if (rand > 0.5) {
-			return new Vector3(BoundsController.CAMERA_SIZE, Random.Range(0, BoundsController.CAMERA_SIZE), 1);
+			return new Vector3(BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(0, BoundsController.MAP_SIZE_VERTICAL), 1);
 		} else {
-			return new Vector3(0, Random.Range(0, BoundsController.CAMERA_SIZE), 1);
+			return new Vector3(-1 * BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(0, BoundsController.MAP_SIZE_VERTICAL), 1);
 		}
 	}
 }
