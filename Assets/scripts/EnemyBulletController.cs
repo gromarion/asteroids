@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletScript : MonoBehaviour {
-
-	public float speed = 10f;
+public class EnemyBulletController : MonoBehaviour {
+	
+	public float speed = 3f;
 	public float maxLifeTime = 2f;
 	private float lifeTime = 0f;
-
+	
 	void OnDisable() {
 		CancelInvoke();
 	}
-
+	
 	void Update () {
 		if (lifeTime < maxLifeTime) {
 			lifeTime += Time.deltaTime;
@@ -20,7 +20,7 @@ public class BulletScript : MonoBehaviour {
 			Destroy();
 		}
 	}
-
+	
 	void Destroy() {
 		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
 		if (explosion != null) {
@@ -31,27 +31,19 @@ public class BulletScript : MonoBehaviour {
 				explosionController.BulletExplosion();
 			}
 		}
-
+		
 		gameObject.SetActive(false);
 		lifeTime = 0;
 	}
-
+	
 	void OnTriggerEnter2D (Collider2D collider) {
-		if (collider.gameObject.tag == "asteroid") {
-			AsteroidController controller = collider.gameObject.GetComponent<AsteroidController> ();
+		if (collider.gameObject.tag == "Player") {
+			PlayerController controller = collider.gameObject.GetComponent<PlayerController> ();
 			if (controller != null) {
-				controller.Damage (1);
+				controller.hit();
 				Destroy ();
 			} else {
-				Debug.LogWarning ("Hit something tagged as asteroid, but didn't have an AsteroidController");
-			}
-		} else if (collider.gameObject.tag == "enemy") {
-			EnemyController controller = collider.gameObject.GetComponent<EnemyController> ();
-			if (controller != null) {
-				controller.Destroy();
-				Destroy();
-			} else {
-				Debug.LogWarning ("Hit something tagged as asteroid, but didn't have an AsteroidController");
+				Debug.LogWarning ("Hit something tagged as Player, but didn't have an PlayerController");
 			}
 		}
 	}

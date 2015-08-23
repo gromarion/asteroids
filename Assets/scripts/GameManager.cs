@@ -137,7 +137,17 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// Finally, refresh the UI
+		SpawnEnemyWithProbability ();
 		ui.RefreshUi();
+	}
+
+	public void SpawnEnemyWithProbability() {
+		if (Random.Range (0f, 1f) > 0.99) {
+			GameObject enemy = PoolManager.instance.enemyPool.GetObject();
+			if (enemy != null) {
+				enemy.SetActive(true);
+			}
+		}
 	}
 
 	public void OnDestroyAsteroid(int asteroidHealth) {

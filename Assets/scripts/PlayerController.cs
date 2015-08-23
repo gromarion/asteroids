@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate(0, 0, 0 - rotate);
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			SoundManager.instance.shoot();
 			fireController.Fire();
 		}
 
@@ -40,10 +39,11 @@ public class PlayerController : MonoBehaviour {
 			}
 			hit();
 			GameManager.instance.OnPlayerDeath();
+			SoundManager.instance.thrustOff();
 		}
 	}
 
-	void hit () {
+	public void hit () {
 		// JA JA JA I let's make some fire
 		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
 		explosion.transform.position = transform.position;
