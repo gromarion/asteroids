@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour {
 
 	public static SoundManager instance;
 
-	public AudioClip shoot_sound, explosion1, explosion2, explosion3, thrust;
+	public AudioClip shoot_sound, explosion1, explosion2, explosion3, thrust, enemy_fire;
 	private AudioSource audio_source;
 	private bool playing_sound;
 
@@ -28,6 +28,12 @@ public class SoundManager : MonoBehaviour {
 	public void shoot() {
 		if (shoot_sound) {
 			audio_source.PlayOneShot(shoot_sound);
+		}
+	}
+
+	public void enemy_shoot() {
+		if (enemy_fire) {
+			audio_source.PlayOneShot(enemy_fire);
 		}
 	}
 

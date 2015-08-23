@@ -9,7 +9,7 @@ public class EnemyFireController : MonoBehaviour {
 		if (obj != null) {
 			GameObject player = GameObject.FindWithTag ("Player");
 			if (player != null) {
-				SoundManager.instance.shoot();
+				SoundManager.instance.enemy_shoot();
 				Vector3 target = player.transform.position;
 				Vector3 direction = transform.position - target;
 				direction.Normalize();
