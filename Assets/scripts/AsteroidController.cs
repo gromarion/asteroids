@@ -11,33 +11,42 @@ public class AsteroidController : MonoBehaviour {
 	public int spawnAmount = 0;
 	public float maxSpeed = 5f;
 
-	private Vector2 speed;
+	private Vector2 velocity;
+	private float speed;
 	private SpriteRenderer spriteRenderer;
+	private CircleCollider2D circleCollider;
 	private int health = 3;
 
 	void Awake () {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		circleCollider = gameObject.GetComponent<CircleCollider2D>();
 	}
 	
 	void Update () {
-		transform.Translate(speed * Time.deltaTime);
+		transform.Translate(velocity * Time.deltaTime);
 	}
 
 	public void MakeSmallAsteroid() {
 		spriteRenderer.sprite = smallAsteroid;
-		speed = Random.insideUnitCircle * maxSpeed;
+		maxSpeed = 5f;
+		velocity = Random.insideUnitCircle * maxSpeed;
+		circleCollider.radius = 0.25f;
 		health = 1;
 	}
 
 	public void MakeMediumAsteroid() {
 		spriteRenderer.sprite = mediumAsteroid;
-		speed = Random.insideUnitCircle * maxSpeed;
+		maxSpeed = 3f;
+		velocity = Random.insideUnitCircle * maxSpeed;
+		circleCollider.radius = 0.5f;
 		health = 2;
 	}
 
 	public void MakeLargeAsteroid() {
 		spriteRenderer.sprite = largeAsteroid;
-		speed = Random.insideUnitCircle * maxSpeed;
+		maxSpeed = 2f;
+		velocity = Random.insideUnitCircle * maxSpeed;
+		circleCollider.radius = 0.65f;
 		health = 3;
 	}
 
