@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour {
 
 	public void enemy_shoot() {
 		if (enemy_fire) {
-			audio_source.PlayOneShot(enemy_fire);
+			audio_source.PlayOneShot(enemy_fire, 0.05f);
 		}
 	}
 

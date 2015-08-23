@@ -3,9 +3,9 @@ using System.Collections;
 
 public class EnemyBulletController : MonoBehaviour {
 	
-	public float speed = 3f;
-	public float maxLifeTime = 2f;
-	private float lifeTime = 0f;
+	public float speed;
+	public float maxLifeTime;
+	private float lifeTime;
 	
 	void OnDisable() {
 		CancelInvoke();

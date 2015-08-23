@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour {
 	public int maxBonus = 5000;
 	public int bonusPerLargeAsteroid = 10;
 	public PlayerController player;
-	private static float MIN_ENEMY_SPAWN_TIME = 10f;
-	private static float MAX_ENEMY_SPAWN_TIME = 30f;
+	private static float MIN_ENEMY_SPAWN_TIME = 1f;
+	private static float MAX_ENEMY_SPAWN_TIME = 3f;
+	private static int ENEMY_BONUS = 100;
 	private float enemy_spawn_time;
 	private float spent_time_since_last_spawn;
 	private bool enemy_spawned;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour {
 		PoolManager.instance.enemyBulletPool.RecycleAll();
 		PoolManager.instance.explotionPool.RecycleAll();
 		player.RestartPlayer();
-		CreateLevel(currentLevel);
+		//CreateLevel(currentLevel);
 		ResetEnemySpawnTime ();
 		ui.ShowHud();
 	}
@@ -161,6 +162,7 @@ public class GameManager : MonoBehaviour {
 			enemy_spawned = true;
 			GameObject enemy = PoolManager.instance.enemyPool.GetObject();
 			if (enemy != null) {
+				enemy.GetComponent<EnemyController>().reset();
 				enemy.SetActive(true);
 			}
 		}
@@ -175,9 +177,12 @@ public class GameManager : MonoBehaviour {
 		score += (3 - asteroidHealth) * bonusPerLargeAsteroid;
 
 		if (remainingAsteroids <= 0) {
-		//if (remainingAsteroids <= 0 && !enemy_spawned) {
 			OnLevelComplete();
 		}
+	}
+
+	public void OnDestroyEnemy() {
+		score += ENEMY_BONUS;
 	}
 
 	public void OnPlayerDeath() {

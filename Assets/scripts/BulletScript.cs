@@ -49,6 +49,7 @@ public class BulletScript : MonoBehaviour {
 			EnemyController controller = collider.gameObject.GetComponent<EnemyController> ();
 			if (controller != null) {
 				controller.Destroy();
+				GameManager.instance.OnDestroyEnemy();
 				Destroy();
 			} else {
 				Debug.LogWarning ("Hit something tagged as asteroid, but didn't have an AsteroidController");

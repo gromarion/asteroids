@@ -4,10 +4,16 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
-	private static float MAX_SPEED = 3f;
-	private static float MIN_SPEED = 3f;
+	private static float MAX_SPEED = 1f;
+	private static float MIN_SPEED = 2f;
+	private static float MIN_SHOOTING_TIME = 3f;
+	private static float MAX_SHOOTING_TIME = 6f;
 	private Vector2 speed;
 	private EnemyFireController fireController;
+	private float shooting_time;
+	private float direction_time;
+	private float elapsed_shooting_time;
+	private float elapsed_direction_time;
 
 	void Awake () {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -15,16 +21,21 @@ public class EnemyController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.position = OutOfScreenPosition ();
-		speed = Random.insideUnitCircle * Random.Range(MIN_SPEED, MAX_SPEED);
+		reset ();
 		fireController = GetComponent<EnemyFireController> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		elapsed_shooting_time += Time.deltaTime;
+		elapsed_direction_time += Time.deltaTime;
 		transform.Translate (speed * Time.deltaTime);
-		if (Random.Range (0f, 1f) > 0.99) {
+		if (elapsed_shooting_time >= shooting_time) {
 			fireController.Fire ();
+			resetShootingTime();
+		}
+		if (elapsed_direction_time >= direction_time) {
+			resetSpeed();
 		}
 	}
 
@@ -39,12 +50,28 @@ public class EnemyController : MonoBehaviour {
 		SoundManager.instance.explode ();
 	}
 
-	private Vector3 OutOfScreenPosition () {
-		float rand = Random.Range (0, 1);
+	public void reset () {
+		resetSpeed ();
+		float rand = Random.Range (0f, 1f);
 		if (rand > 0.5) {
-			return new Vector3(BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(0, BoundsController.MAP_SIZE_VERTICAL), 1);
+			transform.position = new Vector3(BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(-1 * BoundsController.MAP_SIZE_VERTICAL, BoundsController.MAP_SIZE_VERTICAL), 1);
 		} else {
-			return new Vector3(-1 * BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(0, BoundsController.MAP_SIZE_VERTICAL), 1);
+			transform.position = new Vector3(-1 * BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(-1 * BoundsController.MAP_SIZE_VERTICAL, BoundsController.MAP_SIZE_VERTICAL), 1);
 		}
+	}
+
+	private void resetShootingTime() {
+		shooting_time = Random.Range(MIN_SHOOTING_TIME, MAX_SHOOTING_TIME);
+		elapsed_shooting_time = 0;
+	}
+
+	private void resetDirectionTime() {
+		direction_time = Random.Range(MIN_SHOOTING_TIME, MAX_SHOOTING_TIME);
+		elapsed_direction_time = 0;
+	}
+
+	private void resetSpeed() {
+		speed = Random.insideUnitCircle * (Random.Range(MIN_SPEED, MAX_SPEED) + MIN_SPEED);
+		resetDirectionTime ();
 	}
 }
