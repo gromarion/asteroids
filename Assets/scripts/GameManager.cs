@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour {
 	public int maxBonus = 5000;
 	public int bonusPerLargeAsteroid = 10;
 	public PlayerController player;
+	private static float MIN_ENEMY_SPAWN_TIME = 10f;
+	private static float MAX_ENEMY_SPAWN_TIME = 30f;
+	private float enemy_spawn_time;
+	private float spent_time_since_last_spawn;
+	private bool enemy_spawned;
 
 	public GameUIController ui;
 
@@ -49,6 +54,12 @@ public class GameManager : MonoBehaviour {
 		RestartGame();
 	}
 
+	public void ResetEnemySpawnTime() {
+		enemy_spawn_time = Random.Range(MIN_ENEMY_SPAWN_TIME, MAX_ENEMY_SPAWN_TIME);
+		spent_time_since_last_spawn = 0;
+		enemy_spawned = false;
+	}
+
 	public void RestartGame() {
 		currentLevel = 1;
 		score = 0;
@@ -56,7 +67,12 @@ public class GameManager : MonoBehaviour {
 		gameStatus = GameStatus.Normal;
 
 		PoolManager.instance.asteroidPool.RecycleAll();
+		PoolManager.instance.enemyPool.RecycleAll();
+		PoolManager.instance.bulletPool.RecycleAll();
+		PoolManager.instance.enemyBulletPool.RecycleAll();
+		PoolManager.instance.explotionPool.RecycleAll();
 		CreateLevel(currentLevel);
+		ResetEnemySpawnTime ();
 		ui.ShowHud();
 		player.gameObject.SetActive(true);
 		player.transform.position = Vector3.zero;
@@ -142,7 +158,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void SpawnEnemyWithProbability() {
-		if (Random.Range (0f, 1f) > 0.99) {
+		spent_time_since_last_spawn += Time.deltaTime;
+		if (spent_time_since_last_spawn >= enemy_spawn_time && !enemy_spawned) {
+			enemy_spawned = true;
 			GameObject enemy = PoolManager.instance.enemyPool.GetObject();
 			if (enemy != null) {
 				enemy.SetActive(true);
@@ -158,7 +176,7 @@ public class GameManager : MonoBehaviour {
 
 		score += (3 - asteroidHealth) * bonusPerLargeAsteroid;
 
-		if (remainingAsteroids <= 0) {
+		if (remainingAsteroids <= 0 && !enemy_spawned) {
 			OnLevelComplete();
 		}
 	}

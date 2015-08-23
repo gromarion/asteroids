@@ -32,13 +32,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collider) {
-		if (collider.gameObject.tag == "asteroid") {
+		if (collider.gameObject.tag == "asteroid" || collider.gameObject.tag == "enemy" || collider.gameObject.tag == "enemy_bullet") {
 			AsteroidController asteroidController = collider.gameObject.GetComponent<AsteroidController>();
 			if (asteroidController != null) {
 				asteroidController.Damage(1);
 			}
 			hit();
 			GameManager.instance.OnPlayerDeath();
+			SoundManager.instance.explode();
 			SoundManager.instance.thrustOff();
 		}
 	}
@@ -52,5 +53,6 @@ public class PlayerController : MonoBehaviour {
 		gameObject.SetActive (false);
 		ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
 		explosionController.ShipExplosion ();
+		SoundManager.instance.thrustOff ();
 	}
 }

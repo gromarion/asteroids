@@ -29,7 +29,14 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	public void Destroy () {
-		gameObject.SetActive(false);
+		GameManager.instance.ResetEnemySpawnTime ();
+		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
+		explosion.transform.position = transform.position;
+		explosion.SetActive (true);
+		gameObject.SetActive (false);
+		ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
+		explosionController.ShipExplosion ();
+		SoundManager.instance.explode ();
 	}
 
 	private Vector3 OutOfScreenPosition () {

@@ -45,6 +45,14 @@ public class EnemyBulletController : MonoBehaviour {
 			} else {
 				Debug.LogWarning ("Hit something tagged as Player, but didn't have an PlayerController");
 			}
+		} else if (collider.gameObject.tag == "asteroid") {
+			AsteroidController controller = collider.gameObject.GetComponent<AsteroidController> ();
+			if (controller != null) {
+				controller.Damage(1);
+				Destroy ();
+			} else {
+				Debug.LogWarning ("Hit something tagged as Asteroid, but didn't have an AsteroidController");
+			}
 		}
 	}
 }
