@@ -1319,7 +1319,7 @@ MonoBehaviour:
   explosion1: {fileID: 8300000, guid: 36e79bc37ba0a4e52a5b27b97d4ba80b, type: 3}
   explosion2: {fileID: 8300000, guid: 8904fdc9dd5d84ef485969bb821fece8, type: 3}
   explosion3: {fileID: 8300000, guid: 1495c5d8952744ff2ae20ab80f338b44, type: 3}
-  thrust: {fileID: 0}
+  thrust: {fileID: 8300000, guid: 8cc5766a22ce74193abf2dfc7b26a145, type: 3}
 --- !u!1 &1528797105 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 170578, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
