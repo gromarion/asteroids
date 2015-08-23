@@ -11,7 +11,11 @@ public class ExplotionController : MonoBehaviour {
 
 	public Animator animator;
 	
-	public void explode () {
-		animator.Play (0);
+	public void ShipExplosion () {
+		animator.Play ("ship_explosion");
+	}
+
+	public void BulletExplosion () {
+		animator.Play ("bullet_explosion");
 	}
 }

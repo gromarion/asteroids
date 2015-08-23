@@ -51,6 +51,6 @@ public class PlayerController : MonoBehaviour {
 		// Die Ship die
 		gameObject.SetActive (false);
 		ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
-		explosionController.explode ();
+		explosionController.ShipExplosion ();
 	}
 }

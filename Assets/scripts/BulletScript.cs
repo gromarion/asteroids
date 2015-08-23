@@ -23,6 +23,16 @@ public class BulletScript : MonoBehaviour {
 	}
 
 	void Destroy() {
+		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
+		if (explosion != null) {
+			ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
+			if (explosionController != null) {
+				explosion.transform.position = transform.position;
+				explosion.SetActive (true);
+				explosionController.BulletExplosion();
+			}
+		}
+
 		gameObject.SetActive(false);
 		lifeTime = 0;
 	}
@@ -30,8 +40,13 @@ public class BulletScript : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.gameObject.tag == "asteroid") {
 			AsteroidController controller = collider.gameObject.GetComponent<AsteroidController>();
-			controller.Damage(1);
-			Destroy();
+			if (controller != null) {
+				controller.Damage(1);
+				Destroy();
+			}
+			else {
+				Debug.LogWarning("Hit something tagged as asteroid, but didn't have an AsteroidController");
+			}
 		}
 	}
 }
