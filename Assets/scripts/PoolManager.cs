@@ -19,6 +19,10 @@ public class PoolManager : MonoBehaviour {
 			Destroy(gameObject); 
 		}
 
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
+	}
+
+	void Destroy() {
+		instance = null;
 	}
 }
