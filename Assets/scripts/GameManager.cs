@@ -74,9 +74,7 @@ public class GameManager : MonoBehaviour {
 		CreateLevel(currentLevel);
 		ResetEnemySpawnTime ();
 		ui.ShowHud();
-		player.gameObject.SetActive(true);
-		player.transform.position = Vector3.zero;
-		player.transform.rotation = new Quaternion(0, 0, 0, 1);
+		player.RestartPlayer();
 	}
 
 	public void CreateLevel(int level) {

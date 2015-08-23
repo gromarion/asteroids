@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed = 3.0f;
 	public float rotationSpeed = 3.0f;
+	public PlayerDebrisController playerDebris;
 
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
@@ -29,6 +30,13 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			SoundManager.instance.thrustOff();
 		}
+	}
+
+	public void RestartPlayer() {
+		gameObject.SetActive(true);
+		transform.position = Vector3.zero;
+		transform.rotation = new Quaternion(0, 0, 0, 1);
+		playerDebris.gameObject.SetActive(false);
 	}
 
 	void OnTriggerEnter2D (Collider2D collider) {
@@ -54,5 +62,12 @@ public class PlayerController : MonoBehaviour {
 		ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();
 		explosionController.ShipExplosion ();
 		SoundManager.instance.thrustOff ();
+
+		if (playerDebris != null) {
+			playerDebris.transform.position = transform.position;
+			playerDebris.transform.rotation = transform.rotation;
+			playerDebris.gameObject.SetActive(true);
+			playerDebris.Explode();
+		}
 	}
 }

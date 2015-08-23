@@ -87,6 +87,48 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &61680293
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 467714, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ab12a8a5cad52974da9efbc942112b99, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &105277460
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +575,12 @@ MonoBehaviour:
   pooledObject: {fileID: 193084, guid: 68c0b5aeb894b422dbf6d7895e160996, type: 2}
   pooledAmount: 1
   willGrow: 0
+--- !u!114 &642103840 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11464322, guid: ab12a8a5cad52974da9efbc942112b99,
+    type: 2}
+  m_PrefabInternal: {fileID: 61680293}
+  m_Script: {fileID: 11500000, guid: a7363e15df7c0bb46b6ffebd43487caf, type: 3}
 --- !u!1 &788070099
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +1017,10 @@ Prefab:
     - target: {fileID: 119972, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
       propertyPath: m_Name
       value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 170578, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9632a71619c9d72469b33e6b0ae3345a, type: 2}
@@ -1471,6 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   rotationSpeed: 3
+  playerDebris: {fileID: 642103840}
 --- !u!212 &1528797112
 SpriteRenderer:
   m_ObjectHideFlags: 0
