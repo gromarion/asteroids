@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 	public int bonusTimePerLevel = 30; // In seconds
 	public int maxBonus = 5000;
 	public int bonusPerLargeAsteroid = 10;
-	public PlayerController player;
 	private static float MIN_ENEMY_SPAWN_TIME = 10f;
 	private static float MAX_ENEMY_SPAWN_TIME = 30f;
 	private static int ENEMY_BONUS = 100;
@@ -75,7 +74,7 @@ public class GameManager : MonoBehaviour {
 		PoolManager.instance.enemyBulletPool.RecycleAll();
 		PoolManager.instance.explotionPool.RecycleAll();
 		player.RestartPlayer();
-		//CreateLevel(currentLevel);
+		CreateLevel(currentLevel);
 		ResetEnemySpawnTime ();
 		ui.ShowHud();
 	}
