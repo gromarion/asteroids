@@ -1307,6 +1307,7 @@ MonoBehaviour:
   txtBonus: {fileID: 945076793}
   txtFinalScore: {fileID: 1980594773}
   txtFinalLevel: {fileID: 1437695542}
+  btnRetry: {fileID: 1982960153}
   pnlGameOver: {fileID: 1170231660}
 --- !u!1 &1435248649
 GameObject:
