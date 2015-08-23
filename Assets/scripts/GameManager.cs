@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 	public int bonusTimePerLevel = 30; // In seconds
 	public int maxBonus = 5000;
 	public int bonusPerLargeAsteroid = 10;
-	public PlayerController player;
 	private static float MIN_ENEMY_SPAWN_TIME = 10f;
 	private static float MAX_ENEMY_SPAWN_TIME = 30f;
 	private float enemy_spawn_time;
@@ -19,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	private bool enemy_spawned;
 
 	public GameUIController ui;
+	public PlayerController player;
 
 	private int remainingAsteroids = 0; // Amount of SMALL asteroids remaining in the current level
 	private int currentLevel = 1;
@@ -45,9 +45,10 @@ public class GameManager : MonoBehaviour {
 		else if (instance != this) {
 			Destroy(gameObject); 
 		}
+	}
 
-		DontDestroyOnLoad(gameObject);
-
+	void Destroy() {
+		instance = null;
 	}
 
 	void Start () {
