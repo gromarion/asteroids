@@ -174,7 +174,8 @@ public class GameManager : MonoBehaviour {
 
 		score += (3 - asteroidHealth) * bonusPerLargeAsteroid;
 
-		if (remainingAsteroids <= 0 && !enemy_spawned) {
+		if (remainingAsteroids <= 0) {
+		//if (remainingAsteroids <= 0 && !enemy_spawned) {
 			OnLevelComplete();
 		}
 	}

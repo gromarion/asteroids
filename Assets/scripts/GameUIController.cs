@@ -10,6 +10,7 @@ public class GameUIController : MonoBehaviour {
 	public Text txtBonus;
 	public Text txtFinalScore;
 	public Text txtFinalLevel;
+	public Button btnRetry;
 	public GameObject pnlGameOver;
 
 	public void RefreshUi() {
@@ -23,6 +24,7 @@ public class GameUIController : MonoBehaviour {
 		pnlGameOver.SetActive(true);
 		txtFinalScore.text = GameManager.instance.GetScore().ToString();
 		txtFinalLevel.text = GameManager.instance.GetLevel().ToString();
+		btnRetry.Select();
 	}
 
 	public void ShowHud() {

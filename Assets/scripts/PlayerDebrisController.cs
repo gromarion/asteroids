@@ -23,7 +23,7 @@ public class PlayerDebrisController : MonoBehaviour {
 		foreach (Transform child in transform) {
 			child.transform.localPosition = originalPositions[i];
 			child.transform.localRotation = originalRotations[i];
-			rigidbodies[i].AddForce(child.transform.localPosition.normalized * Random.Range(100, 150));
+			rigidbodies[i].AddForce((child.transform.position - transform.position).normalized * Random.Range(50, 100));
 			rigidbodies[i].AddTorque(Random.Range(-20, 20));
 			i++;
 		}
