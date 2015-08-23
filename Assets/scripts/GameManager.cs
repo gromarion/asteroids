@@ -71,10 +71,10 @@ public class GameManager : MonoBehaviour {
 		PoolManager.instance.bulletPool.RecycleAll();
 		PoolManager.instance.enemyBulletPool.RecycleAll();
 		PoolManager.instance.explotionPool.RecycleAll();
+		player.RestartPlayer();
 		CreateLevel(currentLevel);
 		ResetEnemySpawnTime ();
 		ui.ShowHud();
-		player.RestartPlayer();
 	}
 
 	public void CreateLevel(int level) {

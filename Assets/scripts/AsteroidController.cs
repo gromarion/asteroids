@@ -28,7 +28,7 @@ public class AsteroidController : MonoBehaviour {
 
 	public void MakeSmallAsteroid() {
 		spriteRenderer.sprite = smallAsteroid;
-		maxSpeed = 5f;
+		maxSpeed = 3f;
 		velocity = Random.insideUnitCircle * maxSpeed;
 		circleCollider.radius = 0.25f;
 		health = 1;
@@ -36,7 +36,7 @@ public class AsteroidController : MonoBehaviour {
 
 	public void MakeMediumAsteroid() {
 		spriteRenderer.sprite = mediumAsteroid;
-		maxSpeed = 3f;
+		maxSpeed = 2f;
 		velocity = Random.insideUnitCircle * maxSpeed;
 		circleCollider.radius = 0.5f;
 		health = 2;
@@ -44,7 +44,7 @@ public class AsteroidController : MonoBehaviour {
 
 	public void MakeLargeAsteroid() {
 		spriteRenderer.sprite = largeAsteroid;
-		maxSpeed = 2f;
+		maxSpeed = 1f;
 		velocity = Random.insideUnitCircle * maxSpeed;
 		circleCollider.radius = 0.65f;
 		health = 3;
