@@ -619,7 +619,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &408578926
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 408578923}
-  on: 0
+  on: 1
   onSprite: {fileID: 21300000, guid: 550146f3e54a0431f9cf6f4f939a266e, type: 3}
   offSprite: {fileID: 21300000, guid: 024b6a74e14ee47bd8cb1e51cff85094, type: 3}
 --- !u!1 &527102689
@@ -673,6 +673,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 527102691}
   - 114: {fileID: 527102690}
+  - 114: {fileID: 527102692}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -711,6 +712,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &527102692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 527102689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499270ab0d926456c9ff02e25218f587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &536689355
 GameObject:
   m_ObjectHideFlags: 0
