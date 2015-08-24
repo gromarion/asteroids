@@ -5,6 +5,7 @@ public class PoolManager : MonoBehaviour {
 
 	public static PoolManager instance;
 	public ObjectPooler bulletPool;
+	public ObjectPooler bigBulletPool;
 	public ObjectPooler asteroidPool;
 	public ObjectPooler explotionPool;
 	public ObjectPooler enemyPool;

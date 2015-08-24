@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 3.0f;
 	public float rotationSpeed = 3.0f;
 	public PlayerDebrisController playerDebris;
+	public GameObject weapon;
+
+	private bool charging = false;
+	private float chargeTime = 0f;
 
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
@@ -21,7 +25,21 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate(0, 0, 0 - rotate);
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			fireController.Fire();
+			fireController.Fire(weapon);
+			charging = true;
+		}
+
+		if (Input.GetKeyUp(KeyCode.Space)) {
+			charging = false;
+			if (chargeTime >= 1) {
+				fireController.StrongFire(weapon);
+				rigidBody.AddForce(-transform.up * 10, ForceMode2D.Impulse);
+			}
+			chargeTime = 0;
+		}
+
+		if (charging) {
+			chargeTime += Time.deltaTime;
 		}
 
 		if (vertical > 0) {
