@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip shoot_sound, explosion1, explosion2, explosion3, thrust, enemy_fire;
 	private AudioSource audio_source;
 	private bool playing_sound;
+	private bool mute;
 
 	void Awake () {
 		if (instance == null) {
@@ -23,36 +24,39 @@ public class SoundManager : MonoBehaviour {
 	void Start () {
 		audio_source = (AudioSource)gameObject.AddComponent<AudioSource>();;
 		playing_sound = false;
+		mute = false;
 	}
 
 	public void shoot() {
-		if (shoot_sound) {
+		if (shoot_sound && !mute) {
 			audio_source.PlayOneShot(shoot_sound);
 		}
 	}
 
 	public void enemy_shoot() {
-		if (enemy_fire) {
+		if (enemy_fire && !mute) {
 			audio_source.PlayOneShot(enemy_fire, 0.05f);
 		}
 	}
 
 	public void explode() {
-		switch (Random.Range (1, 4)) {
-		case 1:
-			audio_source.PlayOneShot (explosion1);
-			break;
-		case 2:
-			audio_source.PlayOneShot (explosion2);
-			break;
-		case 3:
-			audio_source.PlayOneShot (explosion3);
-			break;
+		if (!mute) {
+			switch (Random.Range (1, 4)) {
+			case 1:
+				audio_source.PlayOneShot (explosion1);
+				break;
+			case 2:
+				audio_source.PlayOneShot (explosion2);
+				break;
+			case 3:
+				audio_source.PlayOneShot (explosion3);
+				break;
+			}
 		}
 	}
 
 	public void thrustOn() {
-		if (!playing_sound) {
+		if (!playing_sound && !mute) {
 			audio_source.loop = playing_sound = true;
 			audio_source.clip = thrust;
 			audio_source.Play();
@@ -60,9 +64,13 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void thrustOff() {
-		if (playing_sound) {
+		if (playing_sound && !mute) {
 			playing_sound = false;
 			audio_source.Stop();
 		}
+	}
+
+	public void toggleSound () {
+		mute = !mute;
 	}
 }
