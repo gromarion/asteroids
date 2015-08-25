@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		float vertical = Input.GetAxis("Vertical");
-		float rotate = Input.GetAxis("Horizontal") * rotationSpeed;
+		float rotate = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime * 90;
 		transform.Rotate(0, 0, 0 - rotate);
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
