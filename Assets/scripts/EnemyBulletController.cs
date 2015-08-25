@@ -21,7 +21,7 @@ public class EnemyBulletController : MonoBehaviour {
 		}
 	}
 	
-	void Destroy() {
+	public void Destroy() {
 		GameObject explosion = PoolManager.instance.explotionPool.GetObject ();
 		if (explosion != null) {
 			ExplotionController explosionController = explosion.GetComponent<ExplotionController> ();

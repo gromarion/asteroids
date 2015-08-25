@@ -73,15 +73,24 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D collider) {
-		if (collider.gameObject.tag == "asteroid" || collider.gameObject.tag == "enemy" || collider.gameObject.tag == "enemy_bullet") {
-			AsteroidController asteroidController = collider.gameObject.GetComponent<AsteroidController>();
+		if (collider.gameObject.tag == "asteroid") {
+			AsteroidController asteroidController = collider.gameObject.GetComponent<AsteroidController> ();
 			if (asteroidController != null) {
-				asteroidController.Damage(1);
+				asteroidController.Damage (1);
 			}
-			hit();
-			GameManager.instance.OnPlayerDeath();
-			SoundManager.instance.explode();
-			SoundManager.instance.thrustOff();
+			hit ();
+		} else if (collider.gameObject.tag == "enemy") {
+			EnemyController enemyController = collider.gameObject.GetComponent<EnemyController> ();
+			if (enemyController != null) {
+				enemyController.Destroy ();
+			}
+			hit ();
+		} else if (collider.gameObject.tag == "enemy_bullet") {
+			EnemyBulletController enemyBulletController = collider.gameObject.GetComponent<EnemyBulletController> ();
+			if (enemyBulletController != null) {
+				enemyBulletController.Destroy ();
+			}
+			hit ();
 		}
 	}
 
@@ -102,5 +111,8 @@ public class PlayerController : MonoBehaviour {
 			playerDebris.gameObject.SetActive(true);
 			playerDebris.Explode();
 		}
+		GameManager.instance.OnPlayerDeath();
+		SoundManager.instance.explode();
+		SoundManager.instance.thrustOff();
 	}
 }
