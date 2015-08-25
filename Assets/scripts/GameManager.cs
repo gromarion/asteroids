@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void RestartGame() {
+		GetComponent<PauseDelegate>().UnPause ();
 		currentLevel = 1;
 		score = 0;
 		bonus = 0;
