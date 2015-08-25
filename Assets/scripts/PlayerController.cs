@@ -70,6 +70,9 @@ public class PlayerController : MonoBehaviour {
 		transform.position = Vector3.zero;
 		transform.rotation = new Quaternion(0, 0, 0, 1);
 		playerDebris.gameObject.SetActive(false);
+		chargeTime = 0;
+		charging = false;
+		weapon.gameObject.SetActive(false);
 	}
 
 	void OnTriggerEnter2D (Collider2D collider) {
