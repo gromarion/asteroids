@@ -53,10 +53,11 @@ public class EnemyController : MonoBehaviour {
 	public void reset () {
 		resetSpeed ();
 		float rand = Random.Range (0f, 1f);
+		BoundsController bounds_controller = GetComponent<BoundsController>();
 		if (rand > 0.5) {
-			transform.position = new Vector3(BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(-1 * BoundsController.MAP_SIZE_VERTICAL, BoundsController.MAP_SIZE_VERTICAL), 1);
+			transform.position = new Vector3(bounds_controller.CameraHorizontal (), Random.Range(-1 * bounds_controller.CameraVertical (), bounds_controller.CameraVertical ()), 1);
 		} else {
-			transform.position = new Vector3(-1 * BoundsController.MAP_SIZE_HORIZONTAL, Random.Range(-1 * BoundsController.MAP_SIZE_VERTICAL, BoundsController.MAP_SIZE_VERTICAL), 1);
+			transform.position = new Vector3(-1 * bounds_controller.CameraHorizontal (), Random.Range(-1 * bounds_controller.CameraVertical (), bounds_controller.CameraVertical ()), 1);
 		}
 	}
 
