@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 077f6fd198af2b7439f436bb6127a8ae
-timeCreated: 1440300967
+timeCreated: 1440529162
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,10 @@ TextureImporter:
     21300004: bullet_2
     21300006: bullet_3
     21300008: bullet_4
+    21300010: bullet_5
+    21300012: bullet_6
+    21300014: bullet_7
+    21300016: bullet_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +62,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 6
         width: 25
         height: 34
       alignment: 0
@@ -68,7 +72,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 25
-        y: 0
+        y: 6
         width: 27
         height: 34
       alignment: 0
@@ -78,7 +82,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 7
+        y: 13
         width: 23
         height: 22
       alignment: 0
@@ -88,21 +92,61 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 81
-        y: 7
-        width: 23
-        height: 22
+        y: 11
+        width: 25
+        height: 27
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bullet_4
       rect:
         serializedVersion: 2
-        x: 115
-        y: 7
-        width: 20
-        height: 21
+        x: 112
+        y: 12
+        width: 25
+        height: 24
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bullet_7
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 10
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bullet_8
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 2
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bullet_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 31
+        height: 40
+      alignment: 9
+      pivot: {x: .484773219, y: .157770529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bullet_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 0
+        width: 21
+        height: 22
+      alignment: 9
+      pivot: {x: .488760799, y: .188882127}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

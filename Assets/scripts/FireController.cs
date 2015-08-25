@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class FireController : MonoBehaviour {
 
-	public void Fire(GameObject shootFrom) {
+	public bool Fire(GameObject shootFrom) {
 		GameObject obj = PoolManager.instance.bulletPool.GetObject();
+		bool fired = false;
 
 		if (obj != null) {
 			SoundManager.instance.shoot();
@@ -19,11 +20,15 @@ public class FireController : MonoBehaviour {
 			}
 			
 			obj.SetActive(true);
+			fired = true;
 		}
+
+		return fired;
 	}
 
-	public void StrongFire(GameObject shootFrom) {
+	public bool StrongFire(GameObject shootFrom) {
 		GameObject obj = PoolManager.instance.bigBulletPool.GetObject();
+		bool fired = false;
 
 		if (obj != null) {
 			SoundManager.instance.shoot();
@@ -36,7 +41,10 @@ public class FireController : MonoBehaviour {
 				obj.transform.rotation = transform.rotation;
 			}
 			obj.SetActive(true);
+			fired = true;
 		}
+
+		return fired;
 	}
 
 }

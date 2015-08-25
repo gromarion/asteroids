@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 3.0f;
 	public float rotationSpeed = 3.0f;
 	public PlayerDebrisController playerDebris;
-	public GameObject weapon;
+	public Animator weapon;
 
 	private bool charging = false;
 	private float chargeTime = 0f;
@@ -25,21 +25,36 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate(0, 0, 0 - rotate);
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			fireController.Fire(weapon);
+			bool fired = fireController.Fire(weapon.gameObject);
+			if (fired) {
+				weapon.gameObject.SetActive(true);
+				weapon.Play ("muzzle");
+			}
 			charging = true;
 		}
 
 		if (Input.GetKeyUp(KeyCode.Space)) {
 			charging = false;
 			if (chargeTime >= 1) {
-				fireController.StrongFire(weapon);
+				fireController.StrongFire(weapon.gameObject);
 				rigidBody.AddForce(-transform.up * 10, ForceMode2D.Impulse);
+				weapon.gameObject.SetActive(false);
 			}
+
+			weapon.gameObject.SetActive(false);
 			chargeTime = 0;
 		}
 
 		if (charging) {
 			chargeTime += Time.deltaTime;
+			if (chargeTime >= 1.0f) {
+				weapon.gameObject.SetActive(true);
+				weapon.Play ("bullet_charge");
+			}
+			else if (chargeTime >= 0.5f) {
+				weapon.gameObject.SetActive(true);
+				weapon.Play ("bullet_charge_small");
+			}
 		}
 
 		if (vertical > 0) {
