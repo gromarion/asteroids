@@ -763,10 +763,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 408578923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8b7a92b01614135bca49b92cbb2bdd, type: 3}
+  m_Script: {fileID: 11500000, guid: ce1c8031b96fb4a09a9e930937708cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 408578923}
+  gameObject: {fileID: 408578923}
   on: 1
   onSprite: {fileID: 21300000, guid: 550146f3e54a0431f9cf6f4f939a266e, type: 3}
   offSprite: {fileID: 21300000, guid: 024b6a74e14ee47bd8cb1e51cff85094, type: 3}

@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour {
 	private AudioSource audio_source;
 	private bool playing_sound;
 	private bool mute;
-	public SwapButton muteButton;
+	public SwapImage muteButton;
 
 
 	void Awake () {
