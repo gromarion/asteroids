@@ -80,7 +80,7 @@ public class SoundManager : MonoBehaviour {
 
 	public void toggleSound () {
 		mute = !mute;
-		if (muteButton) {
+		if (muteButton != null) {
 			muteButton.swap();
 		}
 	}
