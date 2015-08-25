@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour {
 	private AudioSource audio_source;
 	private bool playing_sound;
 	private bool mute;
+	public SwapButton muteButton;
+
 
 	void Awake () {
 		if (instance == null) {
@@ -25,6 +27,12 @@ public class SoundManager : MonoBehaviour {
 		audio_source = (AudioSource)gameObject.AddComponent<AudioSource>();;
 		playing_sound = false;
 		mute = false;
+	}
+
+	void Update () {
+		if (Input.GetKeyDown (KeyCode.M)) {
+			toggleSound ();
+		}
 	}
 
 	public void shoot() {
@@ -72,5 +80,8 @@ public class SoundManager : MonoBehaviour {
 
 	public void toggleSound () {
 		mute = !mute;
+		if (muteButton) {
+			muteButton.swap();
+		}
 	}
 }

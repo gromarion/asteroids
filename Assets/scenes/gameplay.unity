@@ -1438,6 +1438,7 @@ MonoBehaviour:
   explosion3: {fileID: 8300000, guid: 1495c5d8952744ff2ae20ab80f338b44, type: 3}
   thrust: {fileID: 8300000, guid: 8cc5766a22ce74193abf2dfc7b26a145, type: 3}
   enemy_fire: {fileID: 8300000, guid: 51ac2d421a7bf4bc286adc9684771003, type: 3}
+  muteButton: {fileID: 408578928}
 --- !u!1 &1143400332
 GameObject:
   m_ObjectHideFlags: 0
