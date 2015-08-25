@@ -11,12 +11,20 @@ public class PauseDelegate : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
 			pause = !pause;
 			if (pause) {
-				pnlPause.SetActive(true);
-				Time.timeScale = 0;
+				Pause();
 			} else {
-				pnlPause.SetActive(false);
-				Time.timeScale = 1;
+				UnPause();
 			}
 		}
+	}
+
+	public void Pause () {
+		pnlPause.SetActive(true);
+		Time.timeScale = 0;
+	}
+
+	public void UnPause () {
+		pnlPause.SetActive(false);
+		Time.timeScale = 1;
 	}
 }
