@@ -10,4 +10,8 @@ public class Router : MonoBehaviour {
 	public void showMainMenu () {
 		Application.LoadLevel("mainmenu");
 	}
+
+	public void endGame () {
+		Application.Quit ();
+	}
 }
