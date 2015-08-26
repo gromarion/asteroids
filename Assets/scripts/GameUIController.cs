@@ -13,6 +13,11 @@ public class GameUIController : MonoBehaviour {
 	public Button btnRetry;
 	public GameObject pnlGameOver;
 
+	void Update () {
+		int availableBullets = PoolManager.instance.bulletPool.getAvailableObjects ();
+
+	}
+
 	public void RefreshUi() {
 		txtScore.text = GameManager.instance.GetScore().ToString();
 		txtLevel.text = GameManager.instance.GetLevel().ToString();

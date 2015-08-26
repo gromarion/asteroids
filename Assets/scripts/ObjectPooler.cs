@@ -45,4 +45,14 @@ public class ObjectPooler : MonoBehaviour {
 			pooledObjects[i].SetActive(false);
 		}
 	}
+
+	public int getAvailableObjects() {
+		int count = 0;
+		for (int i = 0; i < pooledObjects.Count; i++) {
+			if (!pooledObjects[i].activeInHierarchy) {
+				count++;
+			}
+		}
+		return count;
+	}
 }
