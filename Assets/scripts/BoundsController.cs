@@ -17,8 +17,6 @@ public class BoundsController : MonoBehaviour {
 	public void Update () {
 		camera_horizontal = MAP_SIZE * Screen.width/REFERENCE_ASPECT.x;
 		camera_vertical = MAP_SIZE * (REFERENCE_ASPECT.y / REFERENCE_ASPECT.x) * Screen.height/REFERENCE_ASPECT.y;
-		Debug.Log (camera_horizontal);
-		Debug.Log (camera_vertical);
 		float model_position_x = transform.position.x * 0.5f + 0.5f * camera_horizontal;
 		float model_position_y = transform.position.y * 0.5f + 0.5f * camera_vertical;
 
