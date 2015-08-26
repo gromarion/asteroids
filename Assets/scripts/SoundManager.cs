@@ -17,10 +17,14 @@ public class SoundManager : MonoBehaviour {
 		if (instance == null) {
 			instance = this;
 		}
+		
 		else if (instance != this) {
 			Destroy(gameObject); 
 		}
-		DontDestroyOnLoad(gameObject);
+	}
+	
+	void Destroy() {
+		instance = null;
 	}
 
 	void Start () {
@@ -81,7 +85,7 @@ public class SoundManager : MonoBehaviour {
 	public void toggleSound () {
 		mute = !mute;
 		if (muteButton != null) {
-			muteButton.swap();
+			muteButton.swap ();
 		}
 	}
 }
