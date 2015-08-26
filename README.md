@@ -4,4 +4,4 @@
 ## INTRODUCCION AL DESARROLLO DE VIDEOJUEGOS ##
 ### ITBA ###
 
-Check the tag: asteroids-v1.0.1
+Check the tag: asteroids-v1.0.2
